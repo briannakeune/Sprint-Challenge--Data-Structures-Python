@@ -125,24 +125,25 @@ f = open('names_2.txt', 'r')
 names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
-duplicates = []  # Return the list of duplicates in this data structure
+# Return the list of duplicates in this data structure
+duplicates = [i for i in (set(names_1).intersection(names_2))]
 
-# creating a binary tree with M as the root node
-# i chose m because it's the middle of the alphabet
-bst = BSTNode('M')
-# inserting all names for name_1 list into my binary tree
-for name in names_1:
-    bst.insert(name)
-# then for each name in name_2 we
-# search the bst for a value that is equal
-for name_2 in names_2:
-    if bst.contains(name_2):
-        # if value is equal append
-        duplicates.append(name_2)
-# this helps runtime because I do not have to search
-# both lists with a variable amount of indexes through each index
-# also because I chose a binary tree, it will only have to search
-# half of the alpabet names, rather than every single name in the original list
+# # creating a binary tree with M as the root node
+# # i chose m because it's the middle of the alphabet
+# bst = BSTNode('M')
+# # inserting all names for name_1 list into my binary tree
+# for name in names_1:
+#     bst.insert(name)
+# # then for each name in name_2 we
+# # search the bst for a value that is equal
+# for name_2 in names_2:
+#     if bst.contains(name_2):
+#         # if value is equal append
+#         duplicates.append(name_2)
+# # this helps runtime because I do not have to search
+# # both lists with a variable amount of indexes through each index
+# # also because I chose a binary tree, it will only have to search
+# # half of the alpabet names, rather than every single name in the original list
 
 end_time = time.time()
 print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
